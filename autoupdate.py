@@ -3,7 +3,6 @@ import subprocess
 
 # „GitHub“ URL ir tikslinis aplankas
 github_url = "https://github.com/tavoweb/tavoweb.eu.git"
-local_repo_path = "/home/admin/domains/tavoweb.eu/public_html/"
 target_path = "/home/admin/domains/tavoweb.eu/public_html/"
 
 def update_repo():
