@@ -2,8 +2,6 @@
 <link href="css/card.css" rel="stylesheet">
 <main>
 <div class="container">
-
-
 <?php
 // Nuotolinės ir vietinės versijos failų keliai
 $localVersionFile = __DIR__ . '/version.txt'; // Vietinis versijos failas
@@ -110,8 +108,7 @@ function copyDirectory($src, $dst) {
         }
     }
     closedir($dir);
-}
-?>
+} ?>
 </div>
 </main>
 

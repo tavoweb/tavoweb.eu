@@ -1,0 +1,25 @@
+name: Update README with Version
+
+on:
+  push:
+    paths:
+      - version.txt
+      - README.md
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Update README with version from version.txt
+        run: |
+          VERSION=$(cat version.txt)
+          sed -i "s/Versija:.*/Versija: $VERSION/" README.md
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add README.md
+          git commit -m "Update version in README.md"
+          git push
