@@ -3,7 +3,7 @@
 $localVersionFile = __DIR__ . '/version.txt'; // Vietinis versijos failas
 $remoteVersionUrl = 'https://raw.githubusercontent.com/tavoweb/tavoweb.eu/main/version.txt'; // Nuotolinis versijos failas
 $githubRepoZipUrl = 'https://github.com/tavoweb/tavoweb.eu/archive/refs/heads/main.zip'; // Saugyklos ZIP URL
-$localProjectPath = __DIR__ . '/'; // Katalogas, kuriame saugomas projektas
+$rootPath = __DIR__; // Šakninė katalogo vieta
 
 try {
     // 1. Patikrinkite, ar egzistuoja vietinis versijos failas
@@ -55,20 +55,14 @@ try {
         throw new Exception("Nepavyko atidaryti ZIP failo.");
     }
 
-    // 7. Perkelkite failus iš `<repository-name>-main` į tikslinį katalogą
+    // 7. Perkelkite failus iš `<repository-name>-main` tiesiai į šakninį katalogą
     $extractedMainDir = $tempExtractPath . '/tavoweb.eu-main';
     if (!is_dir($extractedMainDir)) {
         throw new Exception("Nepavyko rasti išarchyvuoto katalogo: $extractedMainDir");
     }
 
-    // Išvalome seną projekto katalogą
-    if (is_dir($localProjectPath)) {
-        deleteDirectory($localProjectPath);
-    }
-    mkdir($localProjectPath, 0755, true);
-
-    // Perkeliame turinį
-    copyDirectory($extractedMainDir, $localProjectPath);
+    // Perkeliame turinį tiesiai į šakninį katalogą
+    copyDirectory($extractedMainDir, $rootPath);
 
     // Ištriname laikiną ZIP failą ir išarchyvuotą turinį
     unlink($tempZipFile);
@@ -97,12 +91,13 @@ function deleteDirectory($dir) {
 // Pagalbinė funkcija failų ir katalogų kopijavimui
 function copyDirectory($src, $dst) {
     $dir = opendir($src);
-    mkdir($dst, 0755, true);
     while (($file = readdir($dir)) !== false) {
         if ($file == '.' || $file == '..') continue;
         $srcPath = "$src/$file";
         $dstPath = "$dst/$file";
         if (is_dir($srcPath)) {
+            // Jei katalogas, sukuriame naują katalogą tiksliniame kelyje
+            if (!is_dir($dstPath)) mkdir($dstPath, 0755, true);
             copyDirectory($srcPath, $dstPath);
         } else {
             copy($srcPath, $dstPath);
