@@ -3,4 +3,4 @@
 
 
 
-Versija: 0.0.14 fixes
+Versija: 0.0.15
