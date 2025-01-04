@@ -3,4 +3,4 @@
 
 
 
-Versija: 0.0.16
+Versija: 0.0.17
