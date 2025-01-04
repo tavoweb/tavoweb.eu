@@ -14,12 +14,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Update README with version from version.txt
+      - name: Read version.txt and update README.md
         run: |
           VERSION=$(cat version.txt)
-          sed -i "s/Versija:.*/Versija: $VERSION/" README.md
+          echo "Updating README.md with version: $VERSION"
+          
+          # Patikrinkite, ar README.md turi "Versija:" eilutę
+          if grep -q "Versija:" README.md; then
+            echo "Found 'Versija:' in README.md. Updating..."
+            # Jei "Versija:" yra, atnaujinkite ją
+            sed -i "s/Versija:.*/Versija: $VERSION/" README.md
+          else
+            echo "'Versija:' not found in README.md. Adding it..."
+            # Jei "Versija:" nėra, pridėkite ją pabaigoje
+            echo -e "\nVersija: $VERSION" >> README.md
+          fi
+          
+          # Komituoti pakeitimus
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add README.md
           git commit -m "Update version in README.md"
+          
+          # Stumti pakeitimus atgal į GitHub
           git push
