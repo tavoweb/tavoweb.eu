@@ -2,7 +2,7 @@ import os
 import subprocess
 
 # „GitHub“ URL ir vietinė saugyklos vieta
-github_url = "https://github.com/vartotojas/projektas.git"
+github_url = "https://github.com/tavoweb/tavoweb.eu.git"
 local_repo_path = "/home/admin/domains/tavoweb.eu/public_html"
 
 def update_repo():
