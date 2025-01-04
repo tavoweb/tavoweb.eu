@@ -1,9 +1,15 @@
 <?php include 'header.php'; ?>
-<link href="css/card.css" rel="stylesheet">
+
 <main>
 <section id="hero" class="hero section">
 
 <div class="container" data-aos="fade-up" data-aos-delay="100">
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 
         <?php
         // Nuotolinės ir vietinės versijos failų keliai
@@ -113,8 +119,6 @@
             }
             closedir($dir);
         } ?>
-    </div>
-
     </div>
 
 </section>    
