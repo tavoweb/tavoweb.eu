@@ -3,7 +3,6 @@
 <main>
 <div class="container">
 
-Test
 <!--    <div class="row">
         <div class="col-sm"></div>
         <div class="col-sm"></div>

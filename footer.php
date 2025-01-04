@@ -44,7 +44,7 @@
                     echo 'Failas "version.txt" nerastas';
                 }
             ?>
-        </a></span>
+        </a><a href="/update.php">ATNAUJINTI?</a></span>
 
     </div>
 
