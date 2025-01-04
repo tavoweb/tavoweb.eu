@@ -3,4 +3,4 @@
 
 
 
-Versija: 0.0.15
+Versija: 0.0.15 beta
