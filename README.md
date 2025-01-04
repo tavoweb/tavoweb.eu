@@ -2,6 +2,3 @@
  Zaidimu eikstele
 
 
-
-# versija
- 0.0.5

@@ -45,7 +45,6 @@
                 }
             ?>
         </a><a href="/update.php">ATNAUJINTI?</a></span>
-
     </div>
 
   </footer>

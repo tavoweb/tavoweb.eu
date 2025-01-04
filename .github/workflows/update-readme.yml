@@ -29,12 +29,17 @@ jobs:
             # Jei "Versija:" nėra, pridėkite ją pabaigoje
             echo -e "\nVersija: $VERSION" >> README.md
           fi
-          
-          # Komituoti pakeitimus
+
+      - name: Configure GitHub authentication
+        run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
+          git config --global credential.helper store
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Commit and push changes
+        run: |
           git add README.md
           git commit -m "Update version in README.md"
-          
-          # Stumti pakeitimus atgal į GitHub
-          git push
+          git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
