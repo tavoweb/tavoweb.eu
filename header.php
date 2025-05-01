@@ -45,7 +45,7 @@
           <li><a href="pass-generator.php" class="active">Slaptažodžių generatorius</a></li>
           <li><a href="https://seo.tavoweb.eu" class="">SEO Tools</a></li>
           <li><a href="https://analytics.tavoweb.eu" class="">Analytics tool</a></li>
-          <li><a href="https://tools.tavoweb.eu" class="">Tther tools</a></li>
+          <li><a href="https://tools.tavoweb.eu" class="">Other tools</a></li>
          <!-- <li><a href="#about">About</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#services">Services</a></li>
